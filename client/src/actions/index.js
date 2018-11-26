@@ -1,10 +1,10 @@
 import { ADD_USER,FETCH_USER,DELETE_USER } from '../actions/type';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:5000/api/user';
+const apiUrl = 'http://127.0.0.1:5000/api/user';
 export const createUser = ({ fullname, username, email, imageUrl, imageId }) => {
     return (dispatch) => {
-      return axios.post(`${apiUrl}/create-profile`, {fullname, username, email, imageUrl, imageId})
+      return axios.post(`${apiUrl}/create-user`, {fullname, username, email, imageUrl, imageId})
         .then(response => {
           dispatch(createUserSuccess(response.data))
         })
@@ -24,6 +24,7 @@ export const createUser = ({ fullname, username, email, imageUrl, imageId }) => 
         email: data.email,
         imageUrl: data.imageUrl,
         imageId: data.imageId,
+        editing: false
       }
     }
   };
@@ -36,7 +37,7 @@ export const createUser = ({ fullname, username, email, imageUrl, imageId }) => 
   
   export const fetchAllUsers = () => {
     return (dispatch) => {
-      return axios.get(apiUrl)
+      return axios.get(`${apiUrl}/all-users`)
         .then(response => {
           dispatch(fetchUsers(response.data))
         })
