@@ -1,4 +1,4 @@
-import { ADD_USER,FETCH_USER } from '../actions/type';
+import { ADD_USER,FETCH_USER,DELETE_USER } from '../actions/type';
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/user';
@@ -56,4 +56,11 @@ export const createUser = ({ fullname, username, email, imageUrl, imageId }) => 
         });
     };
   };
-  
+  export const deleteUserSuccess = id => {
+    return {
+      type: DELETE_USER,
+      payload: {
+        id
+      }
+    }
+  }
