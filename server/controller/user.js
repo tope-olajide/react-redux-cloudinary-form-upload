@@ -69,7 +69,7 @@ export default class Users {
         }) => {
             User.findOne({
                     where: {
-                        id: id
+                        id
                     },
                 })
                 .then((foundUser) => {
@@ -80,9 +80,9 @@ export default class Users {
                         });
                     }
 
-                    if (imageId !== foundUser.imageId) {
+/*                     if (imageId !== foundUser.imageId) {
                         cloudinary.destroy(foundUser.imageId, () => {});
-                    }
+                    } */
 
                     foundUser.updateAttributes({
                             fullname,
@@ -106,10 +106,10 @@ export default class Users {
                 }));
         };
         updateDatabase({
-            name,
+            fullname,
             username,
-            res,
-            userId,
+            email,
+            description,
             imageUrl,
             imageId
         });
@@ -118,11 +118,11 @@ export default class Users {
         params
     }, res) {
         const {
-            userId
+            id
         } = params;
         User.findOne({
             where: {
-                id: userId
+                id
             }
         }).then(user => res.status(200).json({
             success: true,
@@ -142,7 +142,7 @@ export default class Users {
         } = params;
         User.findOne({
                 where: {
-                    id: id
+                    id
                 }
             }).then((foundUser) => {
                 foundUser.destroy()
@@ -162,12 +162,12 @@ export default class Users {
                 });
             });
     }
-    allUsers(res) {
-        User.findAll
+    allUsers(req, res) {
+        User.findAll({})
             .then((allUsers) => {
                 res.status(200).json({
                     success: true,
-                    message: 'User Deleted!',
+                    message: 'All users found!',
                     allUsers
                 })
             })
