@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api', routes);
+app.use('/api/', routes);
 
 let port = 5000;
 app.listen(port, () => {
