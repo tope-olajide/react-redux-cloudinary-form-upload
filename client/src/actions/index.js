@@ -45,3 +45,15 @@ export const createUser = ({ fullname, username, email, imageUrl, imageId }) => 
         });
     };
   };
+  export const deleteUser = id => {
+    return (dispatch) => {
+      return axios.get(`${apiUrl}/delete-user/${id}`)
+        .then(response => {
+          dispatch(deleteUserSuccess(response.data))
+        })
+        .catch(error => {
+          throw(error);
+        });
+    };
+  };
+  
