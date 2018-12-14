@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import "./profileCard.css";
+import {connect} from 'react-redux';
 import { Button } from "mdbreact";
 class ViewAllProfilePage extends Component {
+   handleViewProfile = () => {
+    this.props.viewProfile(this.props.id);
+
+  }
   render() {
     return (
 
@@ -34,15 +39,10 @@ class ViewAllProfilePage extends Component {
                 </ul>
                 <div className="card-bottom">
 
-                  <Button onClick={this.props.handleFormSubmit} color="primary">
-                    Edit
-                  </Button>
-                  <Button onClick={this.props.handleFormSubmit} color="primary">
+                  <Button onClick={this.handleViewProfile} color="primary">
                     View
                   </Button>
-                  <Button onClick={this.props.handleFormSubmit} color="primary">
-                    Delete
-                  </Button>
+
                 </div>
               </div>
             </div>
@@ -51,4 +51,5 @@ class ViewAllProfilePage extends Component {
     );
   }
 }
-export default ViewAllProfilePage;
+
+export default connect()(ViewAllProfilePage);
