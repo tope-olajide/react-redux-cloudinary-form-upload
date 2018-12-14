@@ -37,15 +37,17 @@ const img = {
 };
 class CreateProfilePage extends Component {
   render() {
-    const { files } = this.props.files;
+    const {files} = this.state;
 
     const thumbs = files.map(file => (
-      <div style={thumb}>
+      <div style={thumb} key={file.name}>
         <div style={thumbInner}>
-          <img src={file.preview} style={img} />
+          <img
+            src={file.preview}
+            style={img}
+          />
         </div>
-      </div>
-    ));
+      </div>));
     return (
       <div className="biz-form-container card p-5">
         <h4 className="dark-text biz-form-title  text-center ">Add user</h4>
