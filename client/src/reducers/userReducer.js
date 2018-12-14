@@ -1,24 +1,27 @@
 import {
   ADD_USER,
-  FETCH_USER,
-  DELETE_USER
+  FETCH_ALL_USER,
+  DELETE_USER,FETCH_USER,EDIT_USER
 } from './../actions/type';
-
-export default function postReducer(state = [{
-  id: 1,
-  username: 'ttttttt',
-  fullname: 'uuuuuuuuu uuuuu',
-  email: 'oioioioioioi',
-  username: 'ioiiiiioi',
-  imageUrl: 'featured1.jpg'
-}], action) {
+const initialState = {
+  user : {},
+  usersDetails : {},
+  editUser : {}
+}
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_USER:
-      return [...state, action.payload];
-    case DELETE_USER:
-      return state.filter(post => post._id !== action.payload.id);
+      return { ...state,
+        user: action.payload
+      };
     case FETCH_USER:
-      return action.posts;
+      return {...state, usersDetails: action.payload.user}
+      case EDIT_USER:
+      return {...state, editUser: action.payload.user}
+    case DELETE_USER:
+      return state.filter(user => user._id !== action.payload.id);
+    case FETCH_ALL_USER:
+      return action.users;
     default:
       return state;
   }
