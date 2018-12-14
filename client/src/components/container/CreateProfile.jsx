@@ -42,7 +42,7 @@ class CreateProfile extends Component {
     alert("Loading....");
     // start loading animation
     // Push all the axios request promise into a single array
-    const uploaders = this.state.profile.map(file => {
+    const uploaders = this.state.profile.map( file => {
       console.log(file);
       // Initial FormData
       const formData = new FormData();
@@ -94,7 +94,7 @@ class CreateProfile extends Component {
     //  revoke the data uris to avoid memory leaks
     const { files } = this.state;
     for (let i = files.length; i >= 0; i--) {
-      const file = files[0];
+      const file = files[i];
       URL.revokeObjectURL(file.preview);
     }
   }
@@ -107,14 +107,10 @@ class CreateProfile extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <div className="containercontent-container">
-          <div className="row mt-5  card-container">
-            <ViewAllProfile />
-          </div>{" "}
-        </div>
       </div>
     );
   }
+2
 }
 const mapDispatchToProps = dispatch => {
   return {
@@ -124,7 +120,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CreateProfile);
+export default CreateProfile
