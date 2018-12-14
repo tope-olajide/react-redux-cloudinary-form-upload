@@ -53,6 +53,7 @@ class EditProfilePage extends Component {
           <Input
             label="Full Name"
             icon=""
+            default ={this.props.defaultFullname}
             onChange={event => {
               this.props.handleInputChange("fullname", event.target.value);
             }}
@@ -60,6 +61,7 @@ class EditProfilePage extends Component {
           <Input
             label="Username"
             icon=""
+            default ={this.props.defaultUsername}
             onChange={event => {
               this.props.handleInputChange("username", event.target.value);
             }}
@@ -67,6 +69,7 @@ class EditProfilePage extends Component {
           <Input
             label="Email"
             icon=""
+            default ={this.props.defaultEmail}
             onChange={event => {
               this.props.handleInputChange("email", event.target.value);
             }}
@@ -75,6 +78,7 @@ class EditProfilePage extends Component {
             type="textarea"
             label="Description"
             icon=""
+            default ={this.props.defaultDescriptions}
             onChange={event => {
               this.props.handleInputChange("description", event.target.value);
             }}
